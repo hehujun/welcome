@@ -1,5 +1,8 @@
 package org.hhj.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * <b>function:</b>
  *
@@ -10,5 +13,12 @@ package org.hhj.controller;
  * @createDate 2015/5/27 9:54
  * @email hehujun@126.com
  */
+@Controller("userController")
+@RequestMapping("/user")
 public class UserController {
+
+	@RequestMapping("/login")
+	public String login() {
+		return "success";
+	}
 }
