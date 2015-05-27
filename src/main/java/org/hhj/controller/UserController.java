@@ -21,4 +21,9 @@ public class UserController {
 	public String login() {
 		return "success";
 	}
+
+	@RequestMapping("/loginftl")
+	public String loginftl() {
+		return "successftl";
+	}
 }
