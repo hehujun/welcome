@@ -9,5 +9,26 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="db.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${sql.driverclass}" />
+        <property name="url" value="${sql.url}" />
+        <property name="username" value="${sql.username}" />
+        <property name="password" value="${sql.password}" />
+        <property name="initialSize" value="${sql.initialSize}"/>
+        <property name="poolPreparedStatements" value="${sql.poolPreparedStatements}"/>
+        <property name="maxTotal" value="${sql.maxTotal}"/>
+        <property name="maxIdle" value="${sql.maxIdle}"/>
+        <property name="maxWaitMillis" value="${sql.maxWait}"/>
+        <property name="maxOpenPreparedStatements" value="${sql.maxOpenPreparedStatements}"/>
+        <property name="minEvictableIdleTimeMillis" value="${sql.minEvictableIdleTimeMillis}"/>
+        <property name="removeAbandonedTimeout" value="${sql.removeAbandonedTimeout}"/>
+        <property name="removeAbandoned" value="${sql.removeAbandoned}"/>
+    </bean>
+
+
 
 </beans>

@@ -10,5 +10,5 @@ package org.hhj.service;
  * @createDate 2015/5/27 9:54
  * @email hehujun@126.com
  */
-public class UserService {
+public interface UserService {
 }
