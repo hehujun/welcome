@@ -9,7 +9,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="db.properties"/>
+    <context:component-scan base-package="org.hhj"/>
+
+    <context:property-placeholder location="classpath*:db.properties"/>
 
     <!-- 配置数据源 -->
     <bean id="dataSource"
@@ -22,13 +24,17 @@
         <property name="poolPreparedStatements" value="${sql.poolPreparedStatements}"/>
         <property name="maxTotal" value="${sql.maxTotal}"/>
         <property name="maxIdle" value="${sql.maxIdle}"/>
-        <property name="maxWaitMillis" value="${sql.maxWait}"/>
+        <property name="maxWaitMillis" value="${sql.maxWaitMillis}"/>
         <property name="maxOpenPreparedStatements" value="${sql.maxOpenPreparedStatements}"/>
         <property name="minEvictableIdleTimeMillis" value="${sql.minEvictableIdleTimeMillis}"/>
         <property name="removeAbandonedTimeout" value="${sql.removeAbandonedTimeout}"/>
-        <property name="removeAbandoned" value="${sql.removeAbandoned}"/>
+        <property name="removeAbandonedOnBorrow" value="${sql.removeAbandonedOnBorrow}"/>
+        <property name="removeAbandonedOnMaintenance" value="${sql.removeAbandonedOnMaintenance}"/>
     </bean>
 
-
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="queryTimeout" value="3000"/>
+    </bean>
 
 </beans>

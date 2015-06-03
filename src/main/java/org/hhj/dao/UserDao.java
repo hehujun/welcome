@@ -1,5 +1,9 @@
 package org.hhj.dao;
 
+import org.hhj.Entity.User;
+
+import java.util.List;
+
 /**
  * <b>function:</b>
  *
@@ -11,4 +15,6 @@ package org.hhj.dao;
  * @email hehujun@126.com
  */
 public interface UserDao {
+
+    public List<User> getUsers() throws Exception;
 }

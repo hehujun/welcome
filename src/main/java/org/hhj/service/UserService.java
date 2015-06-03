@@ -1,5 +1,9 @@
 package org.hhj.service;
 
+import org.hhj.Entity.User;
+
+import java.util.List;
+
 /**
  * <b>function:</b>
  *
@@ -11,4 +15,6 @@ package org.hhj.service;
  * @email hehujun@126.com
  */
 public interface UserService {
+
+    public List<User> getUsers() throws Exception;
 }
