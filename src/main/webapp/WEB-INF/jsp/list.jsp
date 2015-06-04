@@ -12,7 +12,8 @@
         <th>序号</th>
         <th>用户名称</th>
     </tr>
-    <c:if test="${fn:length(users) lt 0}">
+
+    <c:if test="${fn:length(users) gt 0}">
         <c:forEach items="${users}" var="item" varStatus="i">
             <tr>
                 <td>${i.count}</td>

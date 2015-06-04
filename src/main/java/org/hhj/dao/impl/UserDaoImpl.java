@@ -22,6 +22,14 @@ public class UserDaoImpl implements UserDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<User> getUsers() throws Exception {
-        return this.jdbcTemplate.queryForList("SELECT id, name, password FROM user", User.class);
+        return this.jdbcTemplate.query("SELECT id, name, password FROM user", new RowMapper<User>(){
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User user = new User();
+                user.setId(rs.getLong("id"));
+                user.setName(rs.getString("name"));
+                user.setPassword(rs.getString("password"));
+                return user;
+            }
+        });
     }
 }

@@ -50,7 +50,7 @@ public class UserController {
 			for(User user:users) {
 				System.out.println(user.getName());
 			}
-			modelMap.addAttribute("users", userService.getUsers());
+			modelMap.addAttribute("users", users);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
