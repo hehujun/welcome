@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.hhj"/>
+
+    <context:property-placeholder location="classpath*:db.properties"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${sql.driverclass}" />
+        <property name="url" value="${sql.url}" />
+        <property name="username" value="${sql.username}" />
+        <property name="password" value="${sql.password}" />
+        <property name="initialSize" value="${sql.initialSize}"/>
+        <property name="poolPreparedStatements" value="${sql.poolPreparedStatements}"/>
+        <property name="maxTotal" value="${sql.maxTotal}"/>
+        <property name="maxIdle" value="${sql.maxIdle}"/>
+        <property name="maxWaitMillis" value="${sql.maxWaitMillis}"/>
+        <property name="maxOpenPreparedStatements" value="${sql.maxOpenPreparedStatements}"/>
+        <property name="minEvictableIdleTimeMillis" value="${sql.minEvictableIdleTimeMillis}"/>
+        <property name="removeAbandonedTimeout" value="${sql.removeAbandonedTimeout}"/>
+        <property name="removeAbandonedOnBorrow" value="${sql.removeAbandonedOnBorrow}"/>
+        <property name="removeAbandonedOnMaintenance" value="${sql.removeAbandonedOnMaintenance}"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="queryTimeout" value="3000"/>
+    </bean>
+
+</beans>

@@ -39,3 +39,4 @@ version 1.1
         </bean>
 
         <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+version 1.2
