@@ -1,6 +1,6 @@
 package org.hhj.service;
 
-import org.hhj.Entity.User;
+import org.hhj.entity.User;
 
 import java.util.List;
 

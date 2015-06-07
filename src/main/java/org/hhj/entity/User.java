@@ -1,4 +1,4 @@
-package org.hhj.Entity;
+package org.hhj.entity;
 
 /**
  * Created by hhj on 15-6-3.

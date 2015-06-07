@@ -1,6 +1,6 @@
 package org.hhj.service.impl;
 
-import org.hhj.Entity.User;
+import org.hhj.entity.User;
 import org.hhj.dao.UserDao;
 import org.hhj.service.UserService;
 import org.springframework.stereotype.Service;
