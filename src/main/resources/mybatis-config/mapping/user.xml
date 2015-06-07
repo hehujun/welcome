@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.hhj.entity.UserMapper">
+
+    <resultMap id="BaseResultMap" type="org.hhj.entity.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id AS id,
+        name AS name,
+        password as password
+    </sql>
+
+    <!--<sql id="Base_Where_Clause">
+        <where>
+            <trim prefixOverrides="and">
+                <if test="dicId != null"> and dic_id = #{dicId}</if>
+                <if test="dicName != null">and dic_name = #{dicName}</if>
+                <if test="dicValue != null">and dic_value = #{dicValue}</if>
+                <if test="dicGroup != null">and dic_group = #{dicGroup}</if>
+                <if test="dicType != null">and dic_type = #{dicType}</if>
+                <if test="dicOrder != null">and dic_order = #{dicOrder}</if>
+                <if test="dicStatus != null">and dic_status = #{dicStatus}</if>
+                <if test="dicParentId != null">and dic_parent_id = #{dicParentId}</if>
+
+                &lt;!&ndash; 模糊查询 &ndash;&gt;
+                <if test="dicNameLike != null">and dic_name like CONCAT("%",#{dicNameLike},"%")</if>
+                <if test="dicGroupLike != null">and dic_group like CONCAT("%",#{dicGroupLike},"%")</if>
+            </trim>
+        </where>
+        <if test="sorting != null">order by ${sorting}</if>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </sql>-->
+
+    <!-- 查询总数 -->
+    <!--<select id="selectCount" resultType="java.lang.Long" parameterType="java.util.Map">
+        select count(dic_id)
+        from sys_dictionary
+        <include refid="Base_Where_Clause" />
+    </select>-->
+
+    <!-- 查询 -->
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from user
+    </select>
+
+    <!-- 根据ID查询 -->
+  <!--  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from sys_dictionary
+        where dic_id = #{dicId}
+    </select>-->
+
+    <!-- 根据ID删除 -->
+    <!--<delete id="deleteById" parameterType="java.lang.String">
+        delete from sys_dictionary
+        where dic_id = #{dicId}
+    </delete>-->
+
+    <!-- 删除 -->
+   <!-- <delete id="delete" parameterType="java.util.Map">
+        delete from sys_dictionary
+        <include refid="Base_Where_Clause" />
+    </delete>-->
+
+    <!-- 添加 -->
+   <!-- <insert id="insert" parameterType="com.viathink.sys.domain.SysDictionary">
+        insert into sys_dictionary(
+        dic_id,
+        dic_name,
+        dic_value,
+        dic_group,
+        dic_type,
+        dic_order,
+        dic_status,
+        dic_parent_id
+        )
+        values (
+        #{dicId},
+        #{dicName},
+        #{dicValue},
+        #{dicGroup},
+        #{dicType},
+        #{dicOrder},
+        #{dicStatus},
+        #{dicParentId}
+        )
+    </insert>-->
+
+
+    <!-- 通过ID更新 -->
+    <!--<update id="updateByIdSelective" parameterType="com.viathink.sys.domain.SysDictionary">
+        update sys_dictionary
+        <set>
+            <if test="dicName != null">dic_name = #{dicName},</if>
+            <if test="dicValue != null">dic_value = #{dicValue},</if>
+            <if test="dicGroup != null">dic_group = #{dicGroup},</if>
+            <if test="dicType != null">dic_type = #{dicType},</if>
+            <if test="dicOrder != null">dic_order = #{dicOrder},</if>
+            <if test="dicStatus != null">dic_status = #{dicStatus},</if>
+            <if test="dicParentId != null">dic_parent_id = #{dicParentId},</if>
+        </set>
+        where dic_id = #{dicId}
+    </update>-->
+
+   <!-- <update id="updateById" parameterType="com.viathink.sys.domain.SysDictionary">
+        update sys_dictionary
+        set dic_name = #{dicName},
+        dic_value = #{dicValue},
+        dic_group = #{dicGroup},
+        dic_type = #{dicType},
+        dic_order = #{dicOrder},
+        dic_status = #{dicStatus},
+        dic_parent_id = #{dicParentId}
+        where dic_id = #{dicId}
+    </update>-->
+
+</mapper>
