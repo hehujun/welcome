@@ -1,5 +1,6 @@
 package org.hhj.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hhj.entity.User;
 import org.hhj.service.UserService;
 import org.slf4j.Logger;
@@ -8,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <b>function:</b>
@@ -54,5 +58,20 @@ public class UserController {
 			logger.error(e.getMessage());
 		}
 		return "list";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public Map save(User user) {
+		logger.info("save()");
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			userService.transmanagerTest(user);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			map.put("flag",false);
+		}
+		map.put("flag",true);
+		return map;
 	}
 }

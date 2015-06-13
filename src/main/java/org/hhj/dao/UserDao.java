@@ -17,4 +17,5 @@ import java.util.List;
 public interface UserDao {
 
     public List<User> getUsers() throws Exception;
+    public void transmanagerTest(User user) throws Exception;
 }

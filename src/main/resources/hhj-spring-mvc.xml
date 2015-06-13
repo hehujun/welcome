@@ -14,6 +14,8 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="org.hhj.controller"/>
 
+    <mvc:resources mapping="/static/js/common/**" location="/static/js/common/"/>
+
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="viewResolvers">
             <list>

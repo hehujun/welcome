@@ -20,4 +20,8 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers() throws Exception {
         return  userDao.getUsers();
     }
+
+    public void transmanagerTest(User user) throws Exception {
+        userDao.transmanagerTest(user);
+    }
 }
